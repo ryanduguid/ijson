@@ -1,25 +1,25 @@
-.. image:: https://github.com/ICRAR/ijson/actions/workflows/deploy-to-pypi.yml/badge.svg
+.. image:: https://img.shields.io/github/actions/workflow/status/ICRAR/ijson/deploy-to-pypi.yml?label=Build%20distributions%20and%20upload%20to%20PyPI&style=flat&labelColor=000000
     :target: https://github.com/ICRAR/ijson/actions/workflows/deploy-to-pypi.yml
 
-.. image:: https://github.com/ICRAR/ijson/actions/workflows/fast-built-and-test.yml/badge.svg
+.. image:: https://img.shields.io/github/actions/workflow/status/ICRAR/ijson/fast-built-and-test.yml?label=Build%20and%20test%20ijson&style=flat&labelColor=000000
     :target: https://github.com/ICRAR/ijson/actions/workflows/deploy-to-pypi.yml
 
-.. image:: https://coveralls.io/repos/github/ICRAR/ijson/badge.svg?branch=master
+.. image:: https://img.shields.io/coverallsCoverage/github/ICRAR/ijson?branch=master&style=flat&labelColor=000000
     :target: https://coveralls.io/github/ICRAR/ijson?branch=master
 
-.. image:: https://badge.fury.io/py/ijson.svg
+.. image:: https://img.shields.io/pypi/v/ijson?style=flat&labelColor=000000&color=66023C
     :target: https://badge.fury.io/py/ijson
 
-.. image:: https://img.shields.io/pypi/pyversions/ijson.svg
+.. image:: https://img.shields.io/pypi/pyversions/ijson.svg?style=flat&labelColor=000000&color=66023C
     :target: https://pypi.python.org/pypi/ijson
 
-.. image:: https://img.shields.io/pypi/dd/ijson.svg
+.. image:: https://img.shields.io/pypi/dd/ijson.svg?style=flat&labelColor=000000&color=66023C
     :target: https://pypi.python.org/pypi/ijson
 
-.. image:: https://img.shields.io/pypi/dw/ijson.svg
+.. image:: https://img.shields.io/pypi/dw/ijson.svg?style=flat&labelColor=000000&color=66023C
     :target: https://pypi.python.org/pypi/ijson
 
-.. image:: https://img.shields.io/pypi/dm/ijson.svg
+.. image:: https://img.shields.io/pypi/dm/ijson.svg?style=flat&labelColor=000000&color=66023C
     :target: https://pypi.python.org/pypi/ijson
 
 
