@@ -2,6 +2,22 @@
 
 ## Development
 
+* Fixed handling of integers longer than `sys.get_int_max_str_digits()`:
+  the `yajl2_c` backend no longer crashes on them, and all backends
+  now raise the `ValueError` produced by `int()` (#188).
+* The `yajl2_c` backend now raises a `ValueError` when a file object's
+  `readinto()` returns a length outside the bounds of the buffer it was given,
+  instead of reading past the end of that buffer (#187).
+* The `yajl2_c` backend provides a `memoryview` object to `readinto` objects
+  to ensure the underlying buffer stays of a fixed size.
+* Updated the bundled yajl so the `yajl2_c` backend no longer re-lexes a
+  string that spans input chunks from its opening quote on every new chunk,
+  which made parsing a single long string quadratic in its length. This reaches 
+  the `yajl2_c` backend when ijson is built against the bundled yajl like the 
+  wheels. Builds against a system yajl keep the old behavior. (#194).
+
+## [3.6.0]
+
 * Removed support for Python < 3.10
 * Fixed treatment of null characters on strings (map keys and string values) on `cffi` backend (#178).
 
@@ -413,3 +429,4 @@
 [3.4.0.post0]: https://github.com/ICRAR/ijson/releases/tag/v3.4.0.post0
 [3.5.0]: https://github.com/ICRAR/ijson/releases/tag/v3.5.0
 [3.5.1]: https://github.com/ICRAR/ijson/releases/tag/v3.5.1
+[3.6.0]: https://github.com/ICRAR/ijson/releases/tag/v3.6.0

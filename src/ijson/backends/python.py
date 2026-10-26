@@ -9,6 +9,7 @@ import codecs
 
 
 LEXEME_RE = re.compile(r'[a-z0-9eE\.\+-]+|\S')
+INTEGER_RE = re.compile(r'-?[0-9]+')
 UNARY_LEXEMES = set('[]{},')
 EOF = -1, None
 
@@ -128,8 +129,9 @@ _PARSE_ARRAY_ELEMENT_END = 1
 _PARSE_OBJECT_KEY = 2
 _PARSE_OBJECT_END = 3
 
-# infinity singleton for overflow checks
+# infinity singletons for overflow checks
 inf = float("inf")
+neg_inf = float("-inf")
 
 @utils.coroutine
 def parse_value(target, multivalue, use_float):
@@ -223,11 +225,16 @@ def parse_value(target, multivalue, use_float):
                     raise common.JSONError('Invalid JSON number: %s' % (symbol,))
                 try:
                     number = to_number(symbol)
-                    if number == inf:
+                    if number == inf or number == neg_inf:
                         raise common.JSONError("float overflow: %s" % (symbol,))
                 except:
                     if 'true'.startswith(symbol) or 'false'.startswith(symbol) or 'null'.startswith(symbol):
                         raise common.IncompleteJSONError('Incomplete JSON content')
+                    # a well-formed integer that int() still refused is one
+                    # longer than sys.get_int_max_str_digits(); let that
+                    # error through as the other backends do
+                    if INTEGER_RE.fullmatch(symbol):
+                        raise
                     raise UnexpectedSymbol(symbol, pos)
                 else:
                     send(('number', number))
